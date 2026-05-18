@@ -1,0 +1,512 @@
+{
+  "generatedAt": "2026-05-18T17:06:10.006Z",
+  "sourceSheet": "Sheet1",
+  "sourceFile": "NigeriaInvest.xlsx",
+  "territories": [
+    {
+      "id": "1",
+      "sn": 1,
+      "territory": "Delta",
+      "territoryLabel": "Delta",
+      "developerNotes": "! Single state",
+      "areas": "Delta state",
+      "population": 6194378,
+      "households": 200,
+      "kpi": 70,
+      "sectors": "infrastructure, tech, education",
+      "status": "amber",
+      "projectsActive": "5($20m)",
+      "projectsCompleted": "100($10m)",
+      "fundingMonth1": 5,
+      "fundingMonth2": 10,
+      "fundingMonth3": 20,
+      "fundingMonth4": 30,
+      "fundingMonth5": 40,
+      "fundingMonth6": 50,
+      "fundingMonth7": 80,
+      "fundingProjects": [
+        {
+          "name": "General Hospital",
+          "sector": "infrastructure",
+          "amount": "$5m",
+          "status": "Active",
+          "url": "www.bbc.co.uk"
+        }
+      ],
+      "customData": [
+        {
+          "key": "Custom1",
+          "value": "data1"
+        },
+        {
+          "key": "Custom2",
+          "value": "data2"
+        },
+        {
+          "key": "Custom3",
+          "value": "ABC"
+        },
+        {
+          "key": "Manager",
+          "value": "Mr.James Clever"
+        },
+        {
+          "key": "Service contact",
+          "value": "0786012345678"
+        },
+        {
+          "key": "Last inspected",
+          "value": "Jan12, 2026 10PM"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "sn": 2,
+      "territory": "Ekiti state",
+      "territoryLabel": "Ekiti state",
+      "developerNotes": "! Single state",
+      "areas": "Ekiti state",
+      "population": 3848136,
+      "households": 330,
+      "kpi": 90,
+      "sectors": "Agriculture, natural resources, oilngas,   health, finance, education",
+      "status": "green",
+      "projectsActive": "5($20m)",
+      "projectsCompleted": "100($10m)",
+      "fundingMonth1": 5,
+      "fundingMonth2": 10,
+      "fundingMonth3": 20,
+      "fundingMonth4": 30,
+      "fundingMonth5": 40,
+      "fundingMonth6": 50,
+      "fundingMonth7": 80,
+      "fundingProjects": [
+        {
+          "name": "SAAS platform",
+          "sector": "Tech",
+          "amount": "$8m",
+          "status": "Active",
+          "url": "www.bbc.co.uk"
+        }
+      ],
+      "customData": [
+        {
+          "key": "Custom1",
+          "value": "data1"
+        },
+        {
+          "key": "Custom2",
+          "value": "data2"
+        },
+        {
+          "key": "Custom3",
+          "value": "ABC"
+        },
+        {
+          "key": "Manager",
+          "value": "Mr.James Clever"
+        },
+        {
+          "key": "Service contact",
+          "value": "0786012345678"
+        },
+        {
+          "key": "Last inspected",
+          "value": "Jan12, 2026 10PM"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "sn": 3,
+      "territory": "Gombe",
+      "territoryLabel": "Gombe",
+      "developerNotes": "this contains 1 single state",
+      "areas": "Gombe state",
+      "population": 3976100,
+      "households": 500,
+      "kpi": 100,
+      "sectors": "Dam,river",
+      "status": "green",
+      "projectsActive": "5($20m)",
+      "projectsCompleted": "100($10m)",
+      "fundingMonth1": 5,
+      "fundingMonth2": 10,
+      "fundingMonth3": 20,
+      "fundingMonth4": 30,
+      "fundingMonth5": 40,
+      "fundingMonth6": 50,
+      "fundingMonth7": 80,
+      "fundingProjects": [
+        {
+          "name": "General Hospital",
+          "sector": "infrastructure",
+          "amount": "$5m",
+          "status": "Active",
+          "url": "www.bbc.co.uk"
+        }
+      ],
+      "customData": [
+        {
+          "key": "Custom1",
+          "value": "data1"
+        },
+        {
+          "key": "Custom2",
+          "value": "data2"
+        },
+        {
+          "key": "Custom3",
+          "value": "ABC"
+        },
+        {
+          "key": "Manager",
+          "value": "Mr.James Clever"
+        },
+        {
+          "key": "Service contact",
+          "value": "0786012345678"
+        },
+        {
+          "key": "Last inspected",
+          "value": "Jan12, 2026 10PM"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "sn": 4,
+      "territory": "Imo",
+      "territoryLabel": "Imo",
+      "developerNotes": "this contains 1 single state",
+      "areas": "Imo state",
+      "population": 5804000,
+      "households": 1000,
+      "kpi": 40,
+      "sectors": "Health, Tech, Fashion",
+      "status": "red",
+      "projectsActive": "5($20m)",
+      "projectsCompleted": "100($10m)",
+      "fundingMonth1": 5,
+      "fundingMonth2": 10,
+      "fundingMonth3": 20,
+      "fundingMonth4": 30,
+      "fundingMonth5": 40,
+      "fundingMonth6": 50,
+      "fundingMonth7": 80,
+      "fundingProjects": [
+        {
+          "name": "General Hospital",
+          "sector": "infrastructure",
+          "amount": "$5m",
+          "status": "Active",
+          "url": "www.bbc.co.uk"
+        }
+      ],
+      "customData": [
+        {
+          "key": "Custom1",
+          "value": "data1"
+        },
+        {
+          "key": "Custom2",
+          "value": "data2"
+        },
+        {
+          "key": "Custom3",
+          "value": "ABC"
+        },
+        {
+          "key": "Manager",
+          "value": "Mr.James Clever"
+        },
+        {
+          "key": "Service contact",
+          "value": "0786012345678"
+        },
+        {
+          "key": "Last inspected",
+          "value": "Jan12, 2026 10PM"
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "sn": 5,
+      "territory": "Kaduna",
+      "territoryLabel": "Kaduna",
+      "developerNotes": "this contains 1 single state",
+      "areas": "Kaduna state",
+      "population": 4392360,
+      "households": 660,
+      "kpi": 90,
+      "sectors": "Tech, Mining",
+      "status": "green",
+      "projectsActive": "5($20m)",
+      "projectsCompleted": "100($10m)",
+      "fundingMonth1": 5,
+      "fundingMonth2": 10,
+      "fundingMonth3": 20,
+      "fundingMonth4": 30,
+      "fundingMonth5": 40,
+      "fundingMonth6": 50,
+      "fundingMonth7": 80,
+      "fundingProjects": [
+        {
+          "name": "General Hospital",
+          "sector": "infrastructure",
+          "amount": "$5m",
+          "status": "Active",
+          "url": "www.bbc.co.uk"
+        }
+      ],
+      "customData": [
+        {
+          "key": "Custom1",
+          "value": "data1"
+        },
+        {
+          "key": "Custom2",
+          "value": "data2"
+        },
+        {
+          "key": "Custom3",
+          "value": "ABC"
+        },
+        {
+          "key": "Manager",
+          "value": "Mr.James Clever"
+        },
+        {
+          "key": "Service contact",
+          "value": "0786012345678"
+        },
+        {
+          "key": "Last inspected",
+          "value": "Jan12, 2026 10PM"
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "sn": 6,
+      "territory": "Katsina",
+      "territoryLabel": "Katsina",
+      "developerNotes": "this contains 1 single state",
+      "areas": "Kano state",
+      "population": 4292360,
+      "households": 520,
+      "kpi": 99,
+      "sectors": "Agriculture,  Tech",
+      "status": "green",
+      "projectsActive": "5($20m)",
+      "projectsCompleted": "100($10m)",
+      "fundingMonth1": 5,
+      "fundingMonth2": 10,
+      "fundingMonth3": 20,
+      "fundingMonth4": 30,
+      "fundingMonth5": 40,
+      "fundingMonth6": 50,
+      "fundingMonth7": 80,
+      "fundingProjects": [
+        {
+          "name": "SAAS platform",
+          "sector": "Tech",
+          "amount": "$8m",
+          "status": "Active",
+          "url": "www.bbc.co.uk"
+        }
+      ],
+      "customData": [
+        {
+          "key": "Board Independence",
+          "value": "Yes"
+        },
+        {
+          "key": "ESIA",
+          "value": "Yes"
+        },
+        {
+          "key": "Team size",
+          "value": "10"
+        },
+        {
+          "key": "Manager",
+          "value": "Mr.James Bello"
+        },
+        {
+          "key": "Service contact",
+          "value": "0786012345678"
+        },
+        {
+          "key": "Last inspected",
+          "value": "Jan12, 2026 10PM"
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "sn": 7,
+      "territory": "Katsina",
+      "territoryLabel": "Katsina",
+      "developerNotes": "this contains 1 single state",
+      "areas": "Katsina state",
+      "population": 9292360,
+      "households": 290,
+      "kpi": 75,
+      "sectors": "Pharma,Education",
+      "status": "amber",
+      "projectsActive": "5($20m)",
+      "projectsCompleted": "100($10m)",
+      "fundingMonth1": 5,
+      "fundingMonth2": 10,
+      "fundingMonth3": 20,
+      "fundingMonth4": 30,
+      "fundingMonth5": 40,
+      "fundingMonth6": 50,
+      "fundingMonth7": 80,
+      "fundingProjects": [],
+      "customData": [
+        {
+          "key": "Board Independence",
+          "value": "Yes"
+        },
+        {
+          "key": "ESIA",
+          "value": "Yes"
+        },
+        {
+          "key": "Team size",
+          "value": "10"
+        },
+        {
+          "key": "Manager",
+          "value": "Mr.James Bello"
+        },
+        {
+          "key": "Service contact",
+          "value": "0786012345678"
+        },
+        {
+          "key": "Last inspected",
+          "value": "Jan12, 2026 10PM"
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "sn": 8,
+      "territory": "Plateau",
+      "territoryLabel": "Plateau",
+      "developerNotes": "this contains 1 single state",
+      "areas": "Plateau state",
+      "population": 5492360,
+      "households": 55,
+      "kpi": 96,
+      "sectors": "FinTech, Oil&Gas",
+      "status": "green",
+      "projectsActive": "5($20m)",
+      "projectsCompleted": "100($10m)",
+      "fundingMonth1": 5,
+      "fundingMonth2": 10,
+      "fundingMonth3": 20,
+      "fundingMonth4": 30,
+      "fundingMonth5": 40,
+      "fundingMonth6": 50,
+      "fundingMonth7": 80,
+      "fundingProjects": [
+        {
+          "name": "FarmFoods",
+          "sector": "Agriculture",
+          "amount": "$50m",
+          "status": "Active",
+          "url": "www.bbc.co.uk"
+        }
+      ],
+      "customData": [
+        {
+          "key": "Board Independence",
+          "value": "Yes"
+        },
+        {
+          "key": "ESIA",
+          "value": "Yes"
+        },
+        {
+          "key": "Team size",
+          "value": "10"
+        },
+        {
+          "key": "Manager",
+          "value": "Mr.James Bello"
+        },
+        {
+          "key": "Service contact",
+          "value": "0786012345678"
+        },
+        {
+          "key": "Last inspected",
+          "value": "Jan12, 2026 10PM"
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "sn": 9,
+      "territory": "Lagos",
+      "territoryLabel": "Lagos",
+      "developerNotes": "this contains 1 single state",
+      "areas": "Lagos state",
+      "population": 20492360,
+      "households": 350,
+      "kpi": 92,
+      "sectors": "Infrastructure, Real Estate",
+      "status": "green",
+      "projectsActive": "5($20m)",
+      "projectsCompleted": "100($10m)",
+      "fundingMonth1": 10,
+      "fundingMonth2": 20,
+      "fundingMonth3": 50,
+      "fundingMonth4": 60,
+      "fundingMonth5": 70,
+      "fundingMonth6": 75,
+      "fundingMonth7": 90,
+      "fundingProjects": [
+        {
+          "name": "Gold miner",
+          "sector": "Mining",
+          "amount": "$80m",
+          "status": "Active",
+          "url": "www.bbc.co.uk"
+        }
+      ],
+      "customData": [
+        {
+          "key": "Board Independence",
+          "value": "Yes"
+        },
+        {
+          "key": "ESIA",
+          "value": "Yes"
+        },
+        {
+          "key": "Team size",
+          "value": "10"
+        },
+        {
+          "key": "Manager",
+          "value": "Mr.James Bello"
+        },
+        {
+          "key": "Service contact",
+          "value": "0786012345678"
+        },
+        {
+          "key": "Last inspected",
+          "value": "Jan12, 2026 10PM"
+        }
+      ]
+    }
+  ]
+}
