@@ -1,0 +1,7 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "installCommand": "cd branch360-iinvest-ng && npm install",
+  "buildCommand": "cd branch360-iinvest-ng && npm run build",
+  "outputDirectory": "branch360-iinvest-ng/dist",
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+}
