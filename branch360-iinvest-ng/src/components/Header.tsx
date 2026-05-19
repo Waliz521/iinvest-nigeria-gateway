@@ -29,7 +29,7 @@ const accountButtonClass =
 const filterTriggerClass =
   'inline-flex h-8 min-h-8 w-full items-center justify-between gap-1 overflow-hidden rounded-md border border-slate-200 bg-white px-2 py-1 text-sm text-slate-800 shadow-sm hover:border-slate-300 focus:border-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-600/25 [&>span]:min-w-0 [&>span]:truncate'
 
-const filterTriggerBarClass = `${filterTriggerClass} min-w-[7.25rem] max-w-[9.5rem]`
+const filterTriggerBarClass = `${filterTriggerClass} w-[10.5rem] min-w-[10.5rem] max-w-[10.5rem]`
 
 const contentClass =
   'z-[3000] max-h-[min(280px,50dvh)] overflow-hidden rounded-lg border border-slate-200 bg-white py-1 shadow-lg w-[var(--radix-select-trigger-width)] min-w-[var(--radix-select-trigger-width)] max-w-[min(calc(100vw-2rem),20rem)]'
@@ -63,12 +63,14 @@ function FilterDropdowns({ layout }: { layout: 'bar' | 'stack' }) {
     <div
       className={
         isBar
-          ? 'flex flex-wrap items-end gap-x-3 gap-y-2 sm:gap-x-4'
+          ? 'flex flex-wrap items-end justify-center gap-x-8 gap-y-3'
           : 'flex w-full flex-col gap-4'
       }
     >
       <div className={isBar ? 'flex items-center gap-1.5' : 'flex w-full flex-col gap-1.5'}>
-        <label className={`shrink-0 font-medium text-slate-100 ${isBar ? 'text-xs' : 'text-sm'}`}>
+        <label
+          className={`shrink-0 font-medium text-white/95 ${isBar ? 'text-sm' : 'text-sm'}`}
+        >
           Territory
         </label>
         <SearchableSelect
@@ -87,12 +89,14 @@ function FilterDropdowns({ layout }: { layout: 'bar' | 'stack' }) {
           placeholder="All states"
           searchPlaceholder="Search states..."
           ariaLabel="Filter by state"
-          className={isBar ? 'min-w-[7.25rem] max-w-[9.5rem]' : 'w-full'}
+          className={isBar ? 'w-[10.5rem] min-w-[10.5rem] max-w-[10.5rem]' : 'w-full'}
         />
       </div>
       {cityTerritoryFilterOptions.length > 0 ? (
         <div className={isBar ? 'flex items-center gap-1.5' : 'flex w-full flex-col gap-1.5'}>
-          <label className={`shrink-0 font-medium text-slate-100 ${isBar ? 'text-xs' : 'text-sm'}`}>
+          <label
+          className={`shrink-0 font-medium text-white/95 ${isBar ? 'text-sm' : 'text-sm'}`}
+        >
             Substates
           </label>
           <SearchableSelect
@@ -110,12 +114,14 @@ function FilterDropdowns({ layout }: { layout: 'bar' | 'stack' }) {
             placeholder="All substates"
             searchPlaceholder="Search substates..."
             ariaLabel="Filter by substate"
-            className={isBar ? 'min-w-[7.25rem] max-w-[9.5rem]' : 'w-full'}
+            className={isBar ? 'w-[10.5rem] min-w-[10.5rem] max-w-[10.5rem]' : 'w-full'}
           />
         </div>
       ) : null}
       <div className={isBar ? 'flex items-center gap-1.5' : 'flex w-full flex-col gap-1.5'}>
-        <label className={`shrink-0 font-medium text-slate-100 ${isBar ? 'text-xs' : 'text-sm'}`}>
+        <label
+          className={`shrink-0 font-medium text-white/95 ${isBar ? 'text-sm' : 'text-sm'}`}
+        >
           Status
         </label>
         <Select.Root
@@ -265,7 +271,7 @@ export function Header({ showFilters = true }: { showFilters?: boolean }) {
   const location = useLocation()
 
   return (
-    <header className="shrink-0 bg-white shadow-[0px_1px_2px_-1px_rgba(0,0,0,0.10),0px_1px_3px_0px_rgba(0,0,0,0.10)]">
+    <header className="shrink-0 bg-white font-[Poppins,system-ui,sans-serif] shadow-[0px_1px_2px_-1px_rgba(0,0,0,0.10),0px_1px_3px_0px_rgba(0,0,0,0.10)]">
       <div className="mx-auto flex h-20 max-w-[1280px] items-center justify-between gap-4 px-4 sm:px-6">
         <Link
           to={ROUTES.home}
@@ -317,11 +323,11 @@ export function Header({ showFilters = true }: { showFilters?: boolean }) {
 
       {showFilters ? (
         <div className="border-t border-[#003a63] bg-[#00487b]">
-          <div className="mx-auto max-w-[1280px] px-4 py-2.5 sm:px-6">
-            <div className="hidden sm:block">
+          <div className="mx-auto max-w-[1280px] px-4 py-3 sm:px-6">
+            <div className="hidden sm:flex sm:justify-center">
               <FilterDropdowns layout="bar" />
             </div>
-            <div className="sm:hidden">
+            <div className="mx-auto w-full max-w-md sm:hidden">
               <FilterDropdowns layout="stack" />
             </div>
           </div>

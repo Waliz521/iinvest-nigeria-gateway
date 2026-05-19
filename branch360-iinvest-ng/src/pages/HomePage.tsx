@@ -25,7 +25,7 @@ export function HomePage() {
 
   return (
     <MapContext.Provider value={{ filters, setFilters }}>
-      <div className="flex flex-col">
+      <div className="flex flex-col font-[Poppins,system-ui,sans-serif]">
         {/* Full-viewport map block — CTAs/footer follow in document flow below */}
         <div className="home-map-shell flex flex-col overflow-hidden bg-gray-100">
           <Header showFilters />
