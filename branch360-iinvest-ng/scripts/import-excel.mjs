@@ -10,8 +10,13 @@ import XLSX from 'xlsx'
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const root = path.join(__dirname, '..')
 
-const DEFAULT_XLSX = path.join(root, '..', 'Data', 'NigeriaInvest.xlsx')
-const xlsxPath = process.argv[2] ? path.resolve(process.argv[2]) : DEFAULT_XLSX
+const DEFAULT_XLSX = path.join(root, '..', 'Data', 'NigeriaInvest_Updated.xlsx')
+const FALLBACK_XLSX = path.join(root, '..', 'Data', 'NigeriaInvest.xlsx')
+const xlsxPath = process.argv[2]
+  ? path.resolve(process.argv[2])
+  : fs.existsSync(DEFAULT_XLSX)
+    ? DEFAULT_XLSX
+    : FALLBACK_XLSX
 const outPath = path.join(root, 'src', 'data', 'territoriesParsed.json')
 
 function normalizeStatus(raw) {

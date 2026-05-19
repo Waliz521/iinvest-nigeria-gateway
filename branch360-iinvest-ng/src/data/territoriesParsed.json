@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-05-18T17:06:10.006Z",
+  "generatedAt": "2026-05-19T15:56:16.084Z",
   "sourceSheet": "Sheet1",
-  "sourceFile": "NigeriaInvest.xlsx",
+  "sourceFile": "NigeriaInvest_Updated.xlsx",
   "territories": [
     {
       "id": "1",
@@ -127,7 +127,7 @@
       "population": 3976100,
       "households": 500,
       "kpi": 100,
-      "sectors": "Dam,river",
+      "sectors": "Education,Tech",
       "status": "green",
       "projectsActive": "5($20m)",
       "projectsCompleted": "100($10m)",
@@ -161,7 +161,7 @@
           "value": "ABC"
         },
         {
-          "key": "Manager",
+          "key": "Service Manager",
           "value": "Mr.James Clever"
         },
         {
@@ -169,7 +169,7 @@
           "value": "0786012345678"
         },
         {
-          "key": "Last inspected",
+          "key": "Last completed project",
           "value": "Jan12, 2026 10PM"
         }
       ]
@@ -218,7 +218,7 @@
           "value": "ABC"
         },
         {
-          "key": "Manager",
+          "key": "Service Manager",
           "value": "Mr.James Clever"
         },
         {
@@ -226,7 +226,7 @@
           "value": "0786012345678"
         },
         {
-          "key": "Last inspected",
+          "key": "Last completed project",
           "value": "Jan12, 2026 10PM"
         }
       ]
@@ -275,7 +275,7 @@
           "value": "ABC"
         },
         {
-          "key": "Manager",
+          "key": "Service Manager",
           "value": "Mr.James Clever"
         },
         {
@@ -283,7 +283,7 @@
           "value": "0786012345678"
         },
         {
-          "key": "Last inspected",
+          "key": "Last completed project",
           "value": "Jan12, 2026 10PM"
         }
       ]
@@ -320,27 +320,27 @@
       ],
       "customData": [
         {
-          "key": "Board Independence",
-          "value": "Yes"
+          "key": "Custom1",
+          "value": "data1"
         },
         {
-          "key": "ESIA",
-          "value": "Yes"
+          "key": "Custom2",
+          "value": "data2"
         },
         {
-          "key": "Team size",
-          "value": "10"
+          "key": "Custom3",
+          "value": "ABC"
         },
         {
-          "key": "Manager",
-          "value": "Mr.James Bello"
+          "key": "Service Manager",
+          "value": "Mr.James Clever"
         },
         {
           "key": "Service contact",
           "value": "0786012345678"
         },
         {
-          "key": "Last inspected",
+          "key": "Last completed project",
           "value": "Jan12, 2026 10PM"
         }
       ]
@@ -369,27 +369,27 @@
       "fundingProjects": [],
       "customData": [
         {
-          "key": "Board Independence",
-          "value": "Yes"
+          "key": "Custom1",
+          "value": "data1"
         },
         {
-          "key": "ESIA",
-          "value": "Yes"
+          "key": "Custom2",
+          "value": "data2"
         },
         {
-          "key": "Team size",
-          "value": "10"
+          "key": "Custom3",
+          "value": "ABC"
         },
         {
-          "key": "Manager",
-          "value": "Mr.James Bello"
+          "key": "Service Manager",
+          "value": "Mr.James Clever"
         },
         {
           "key": "Service contact",
           "value": "0786012345678"
         },
         {
-          "key": "Last inspected",
+          "key": "Last completed project",
           "value": "Jan12, 2026 10PM"
         }
       ]
@@ -426,27 +426,27 @@
       ],
       "customData": [
         {
-          "key": "Board Independence",
-          "value": "Yes"
+          "key": "Custom1",
+          "value": "data1"
         },
         {
-          "key": "ESIA",
-          "value": "Yes"
+          "key": "Custom2",
+          "value": "data2"
         },
         {
-          "key": "Team size",
-          "value": "10"
+          "key": "Custom3",
+          "value": "ABC"
         },
         {
-          "key": "Manager",
-          "value": "Mr.James Bello"
+          "key": "Service Manager",
+          "value": "Mr.James Clever"
         },
         {
           "key": "Service contact",
           "value": "0786012345678"
         },
         {
-          "key": "Last inspected",
+          "key": "Last completed project",
           "value": "Jan12, 2026 10PM"
         }
       ]
@@ -463,8 +463,8 @@
       "kpi": 92,
       "sectors": "Infrastructure, Real Estate",
       "status": "green",
-      "projectsActive": "5($20m)",
-      "projectsCompleted": "100($10m)",
+      "projectsActive": "5($200m)",
+      "projectsCompleted": "100($9900m)",
       "fundingMonth1": 10,
       "fundingMonth2": 20,
       "fundingMonth3": 50,
@@ -473,6 +473,13 @@
       "fundingMonth6": 75,
       "fundingMonth7": 90,
       "fundingProjects": [
+        {
+          "name": "General Hospitals",
+          "sector": "Health",
+          "amount": "$90m",
+          "status": "Active",
+          "url": "www.brachch360.co"
+        },
         {
           "name": "Gold miner",
           "sector": "Mining",
@@ -483,27 +490,27 @@
       ],
       "customData": [
         {
-          "key": "Board Independence",
-          "value": "Yes"
+          "key": "Custom1",
+          "value": "data1"
         },
         {
-          "key": "ESIA",
-          "value": "Yes"
+          "key": "Custom2",
+          "value": "data2"
         },
         {
-          "key": "Team size",
-          "value": "10"
+          "key": "Custom3",
+          "value": "ABC"
         },
         {
-          "key": "Manager",
-          "value": "Mr.James Bello"
+          "key": "Service Manager",
+          "value": "Mr.James Clever"
         },
         {
           "key": "Service contact",
           "value": "0786012345678"
         },
         {
-          "key": "Last inspected",
+          "key": "Last completed project",
           "value": "Jan12, 2026 10PM"
         }
       ]

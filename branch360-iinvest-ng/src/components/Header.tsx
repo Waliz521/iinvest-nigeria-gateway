@@ -62,7 +62,7 @@ function FilterDropdowns({ layout }: { layout: 'bar' | 'stack' }) {
     <div
       className={
         isBar
-          ? 'flex shrink-0 items-center gap-2 sm:gap-3'
+          ? 'flex flex-wrap items-end gap-x-3 gap-y-2 sm:gap-x-4'
           : 'flex w-full flex-col gap-4'
       }
     >
@@ -219,12 +219,6 @@ export function Header({ showFilters = true }: { showFilters?: boolean }) {
           </Link>
         </nav>
 
-        {showFilters ? (
-          <div className="hidden shrink-0 lg:flex">
-            <FilterDropdowns layout="bar" />
-          </div>
-        ) : null}
-
         <a
           href={MY_ACCOUNT_URL}
           target="_blank"
@@ -293,18 +287,23 @@ export function Header({ showFilters = true }: { showFilters?: boolean }) {
                       My Account
                     </a>
                   </nav>
-                  {showFilters ? (
-                    <div className="p-4">
-                      <p className="mb-3 text-sm font-semibold text-slate-900">Map filters</p>
-                      <FilterDropdowns layout="stack" />
-                    </div>
-                  ) : null}
                 </div>
               </Dialog.Content>
             </Dialog.Portal>
           </Dialog.Root>
         </div>
       </div>
+
+      {showFilters ? (
+        <div className="border-t border-slate-100 bg-slate-50/80 px-3 py-2 sm:px-4">
+          <div className="hidden sm:block">
+            <FilterDropdowns layout="bar" />
+          </div>
+          <div className="sm:hidden">
+            <FilterDropdowns layout="stack" />
+          </div>
+        </div>
+      ) : null}
     </header>
   )
 }
