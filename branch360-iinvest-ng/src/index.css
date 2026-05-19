@@ -1,5 +1,10 @@
 @import 'tailwindcss';
 
+@theme {
+  --color-brand-navy: #00487b;
+  --color-brand-orange: #ff6d00;
+}
+
 @import 'leaflet/dist/leaflet.css';
 
 html,

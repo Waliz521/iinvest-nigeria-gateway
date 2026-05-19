@@ -25,6 +25,14 @@ const navLinkClass = (active: boolean) =>
       : 'text-slate-700 hover:bg-slate-100 hover:text-slate-900'
   }`
 
+const marketingNavLinkClass = (active: boolean) =>
+  `text-base leading-6 transition-colors ${
+    active ? 'font-semibold text-[#00487b]' : 'font-normal text-gray-700 hover:text-[#00487b]'
+  }`
+
+const accountButtonClass =
+  'inline-flex h-11 shrink-0 items-center justify-center rounded-[10px] bg-[#00487b] px-6 text-base font-medium text-white shadow-sm transition-colors hover:bg-[#003a63] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00487b]/40'
+
 const filterTriggerClass =
   'inline-flex h-8 min-h-8 w-full items-center justify-between gap-1 overflow-hidden rounded-md border border-slate-200 bg-white px-2 py-1 text-sm text-slate-800 shadow-sm hover:border-slate-300 focus:border-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-600/25 [&>span]:min-w-0 [&>span]:truncate'
 
@@ -179,120 +187,205 @@ function CloseIcon() {
   )
 }
 
+function MobileNavMenu({
+  open,
+  onOpenChange,
+  location,
+  marketing,
+}: {
+  open: boolean
+  onOpenChange: (open: boolean) => void
+  location: { pathname: string }
+  marketing: boolean
+}) {
+  const linkClass = (active: boolean) =>
+    marketing
+      ? `rounded-lg px-3 py-2.5 text-base ${active ? 'font-semibold text-[#00487b]' : 'text-gray-700 hover:bg-slate-50'}`
+      : 'rounded-lg px-3 py-2.5 text-slate-800 hover:bg-slate-50'
+
+  return (
+    <Dialog.Root open={open} onOpenChange={onOpenChange}>
+      <Dialog.Trigger asChild>
+        <button
+          type="button"
+          className="flex items-center justify-center rounded-lg p-2 text-slate-700 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500/30"
+          aria-label="Open menu"
+        >
+          <HamburgerIcon />
+        </button>
+      </Dialog.Trigger>
+      <Dialog.Portal>
+        <Dialog.Overlay className="fixed inset-0 z-[2000] bg-black/40" />
+        <Dialog.Content className="fixed right-0 top-0 z-[2001] flex h-full w-full max-w-sm flex-col bg-white shadow-xl focus:outline-none sm:max-w-md">
+          <Dialog.Title className="sr-only">Menu</Dialog.Title>
+          <div className="flex items-center justify-between border-b border-slate-100 px-4 py-3">
+            <span className="text-lg font-semibold text-slate-900">Menu</span>
+            <Dialog.Close asChild>
+              <button
+                type="button"
+                className="rounded-lg p-2 text-slate-600 hover:bg-slate-100"
+                aria-label="Close menu"
+              >
+                <CloseIcon />
+              </button>
+            </Dialog.Close>
+          </div>
+          <div className="flex flex-1 flex-col overflow-y-auto p-4">
+            <nav className="flex flex-col gap-1" aria-label="Mobile main">
+              <Link
+                to={ROUTES.home}
+                className={linkClass(location.pathname === ROUTES.home)}
+                onClick={() => onOpenChange(false)}
+              >
+                Home
+              </Link>
+              <Link
+                to={ROUTES.invest}
+                className={linkClass(location.pathname === ROUTES.invest)}
+                onClick={() => onOpenChange(false)}
+              >
+                Invest
+              </Link>
+              <Link
+                to={ROUTES.raiseCapital}
+                className={linkClass(location.pathname === ROUTES.raiseCapital)}
+                onClick={() => onOpenChange(false)}
+              >
+                {marketing ? 'Raise Funds' : 'Raise capital'}
+              </Link>
+            </nav>
+            <a
+              href={MY_ACCOUNT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`mt-6 ${marketing ? `${accountButtonClass} w-full` : 'rounded-lg px-3 py-2.5 text-center font-bold text-sky-800 hover:bg-sky-50'}`}
+            >
+              My Account
+            </a>
+          </div>
+        </Dialog.Content>
+      </Dialog.Portal>
+    </Dialog.Root>
+  )
+}
+
 export function Header({ showFilters = true }: { showFilters?: boolean }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const location = useLocation()
+  const isMarketing = !showFilters
 
   return (
-    <header className="shrink-0 border-b border-slate-200 bg-white shadow-sm">
-      <div className="flex flex-wrap items-center gap-x-2 gap-y-2 px-3 py-2 sm:gap-x-3 sm:px-4 lg:flex-nowrap lg:py-2.5">
-        <Link
-          to={ROUTES.home}
-          className="shrink-0 rounded outline-none focus-visible:ring-2 focus-visible:ring-sky-500/40"
-        >
-          <img
-            src={IINVEST_LOGO_SRC}
-            alt="iInvest"
-            width={160}
-            height={44}
-            className="h-8 w-auto max-w-[8.5rem] object-contain object-left sm:h-9 sm:max-w-[9.5rem]"
-            decoding="async"
-          />
-        </Link>
-
-        <h1 className="hidden min-w-0 max-w-[9rem] truncate text-sm font-semibold text-slate-800 xl:block 2xl:max-w-[13rem]">
-          {SITE_TITLE}
-        </h1>
-
-        <nav className="hidden items-center gap-0.5 lg:flex" aria-label="Main">
-          <Link to={ROUTES.home} className={navLinkClass(location.pathname === ROUTES.home)}>
-            Home
-          </Link>
-          <Link to={ROUTES.invest} className={navLinkClass(location.pathname === ROUTES.invest)}>
-            Invest
-          </Link>
+    <header
+      className={`shrink-0 bg-white ${
+        isMarketing
+          ? 'shadow-[0px_1px_2px_-1px_rgba(0,0,0,0.10),0px_1px_3px_0px_rgba(0,0,0,0.10)]'
+          : 'border-b border-slate-200 shadow-sm'
+      }`}
+    >
+      {isMarketing ? (
+        <div className="mx-auto flex h-20 max-w-[1280px] items-center justify-between gap-4 px-4 sm:px-6">
           <Link
-            to={ROUTES.raiseCapital}
-            className={navLinkClass(location.pathname === ROUTES.raiseCapital)}
+            to={ROUTES.home}
+            className="shrink-0 rounded outline-none focus-visible:ring-2 focus-visible:ring-sky-500/40"
           >
-            Raise capital
+            <img
+              src={IINVEST_LOGO_SRC}
+              alt="iInvest"
+              width={144}
+              height={40}
+              className="h-10 w-auto max-w-[9rem] object-contain object-left"
+              decoding="async"
+            />
           </Link>
-        </nav>
 
-        <a
-          href={MY_ACCOUNT_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden shrink-0 rounded-lg px-2.5 py-1.5 text-sm font-bold text-sky-800 hover:bg-sky-50 hover:underline lg:inline-flex"
-        >
-          My Account
-        </a>
+          <nav className="hidden items-center gap-12 lg:flex" aria-label="Main">
+            <Link to={ROUTES.home} className={marketingNavLinkClass(location.pathname === ROUTES.home)}>
+              Home
+            </Link>
+            <Link to={ROUTES.invest} className={marketingNavLinkClass(location.pathname === ROUTES.invest)}>
+              Invest
+            </Link>
+            <Link
+              to={ROUTES.raiseCapital}
+              className={marketingNavLinkClass(location.pathname === ROUTES.raiseCapital)}
+            >
+              Raise Funds
+            </Link>
+          </nav>
 
-        <div className="ml-auto flex shrink-0 lg:hidden">
-          <Dialog.Root open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
-            <Dialog.Trigger asChild>
-              <button
-                type="button"
-                className="flex items-center justify-center rounded-lg p-2 text-slate-700 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500/30"
-                aria-label="Open menu"
-              >
-                <HamburgerIcon />
-              </button>
-            </Dialog.Trigger>
-            <Dialog.Portal>
-              <Dialog.Overlay className="fixed inset-0 z-[2000] bg-black/40" />
-              <Dialog.Content className="fixed right-0 top-0 z-[2001] flex h-full w-full max-w-sm flex-col bg-white shadow-xl focus:outline-none sm:max-w-md">
-                <Dialog.Title className="sr-only">Menu</Dialog.Title>
-                <div className="flex items-center justify-between border-b border-slate-100 px-4 py-3">
-                  <span className="text-lg font-semibold text-slate-900">Menu</span>
-                  <Dialog.Close asChild>
-                    <button
-                      type="button"
-                      className="rounded-lg p-2 text-slate-600 hover:bg-slate-100"
-                      aria-label="Close menu"
-                    >
-                      <CloseIcon />
-                    </button>
-                  </Dialog.Close>
-                </div>
-                <div className="flex-1 overflow-y-auto">
-                  <nav className="flex flex-col gap-1 border-b border-slate-100 p-4" aria-label="Mobile main">
-                    <Link
-                      to={ROUTES.home}
-                      className="rounded-lg px-3 py-2.5 text-slate-800 hover:bg-slate-50"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      Home
-                    </Link>
-                    <Link
-                      to={ROUTES.invest}
-                      className="rounded-lg px-3 py-2.5 text-slate-800 hover:bg-slate-50"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      Invest
-                    </Link>
-                    <Link
-                      to={ROUTES.raiseCapital}
-                      className="rounded-lg px-3 py-2.5 text-slate-800 hover:bg-slate-50"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      Raise capital
-                    </Link>
-                    <a
-                      href={MY_ACCOUNT_URL}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="rounded-lg px-3 py-2.5 font-bold text-sky-800 hover:bg-sky-50"
-                    >
-                      My Account
-                    </a>
-                  </nav>
-                </div>
-              </Dialog.Content>
-            </Dialog.Portal>
-          </Dialog.Root>
+          <div className="flex items-center gap-3">
+            <a
+              href={MY_ACCOUNT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${accountButtonClass} hidden lg:inline-flex`}
+            >
+              My Account
+            </a>
+            <div className="lg:hidden">
+              <MobileNavMenu
+                open={mobileMenuOpen}
+                onOpenChange={setMobileMenuOpen}
+                location={location}
+                marketing
+              />
+            </div>
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className="flex flex-wrap items-center gap-x-2 gap-y-2 px-3 py-2 sm:gap-x-3 sm:px-4 lg:flex-nowrap lg:py-2.5">
+          <Link
+            to={ROUTES.home}
+            className="shrink-0 rounded outline-none focus-visible:ring-2 focus-visible:ring-sky-500/40"
+          >
+            <img
+              src={IINVEST_LOGO_SRC}
+              alt="iInvest"
+              width={160}
+              height={44}
+              className="h-8 w-auto max-w-[8.5rem] object-contain object-left sm:h-9 sm:max-w-[9.5rem]"
+              decoding="async"
+            />
+          </Link>
+
+          <h1 className="hidden min-w-0 max-w-[9rem] truncate text-sm font-semibold text-slate-800 xl:block 2xl:max-w-[13rem]">
+            {SITE_TITLE}
+          </h1>
+
+          <nav className="hidden items-center gap-0.5 lg:flex" aria-label="Main">
+            <Link to={ROUTES.home} className={navLinkClass(location.pathname === ROUTES.home)}>
+              Home
+            </Link>
+            <Link to={ROUTES.invest} className={navLinkClass(location.pathname === ROUTES.invest)}>
+              Invest
+            </Link>
+            <Link
+              to={ROUTES.raiseCapital}
+              className={navLinkClass(location.pathname === ROUTES.raiseCapital)}
+            >
+              Raise capital
+            </Link>
+          </nav>
+
+          <a
+            href={MY_ACCOUNT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden shrink-0 rounded-lg px-2.5 py-1.5 text-sm font-bold text-sky-800 hover:bg-sky-50 hover:underline lg:inline-flex"
+          >
+            My Account
+          </a>
+
+          <div className="ml-auto flex shrink-0 lg:hidden">
+            <MobileNavMenu
+              open={mobileMenuOpen}
+              onOpenChange={setMobileMenuOpen}
+              location={location}
+              marketing={false}
+            />
+          </div>
+        </div>
+      )}
 
       {showFilters ? (
         <div className="border-t border-[#003a63] bg-[#00487b] px-3 py-2.5 sm:px-4">
