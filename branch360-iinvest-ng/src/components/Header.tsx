@@ -5,7 +5,7 @@ import * as Dialog from '@radix-ui/react-dialog'
 import { useMapContext } from '../context/MapContext'
 import { useTerritoryData } from '../context/DataContext'
 import { SearchableSelect } from './SearchableSelect'
-import { IINVEST_LOGO_SRC, MY_ACCOUNT_URL, ROUTES, SITE_TITLE } from '../constants/site'
+import { IINVEST_LOGO_SRC, MY_ACCOUNT_URL, ROUTES } from '../constants/site'
 import { STATUS_LABELS } from '../data/statusColors'
 import type { InvestStatus } from '../types'
 
@@ -17,13 +17,6 @@ const STATUS_OPTIONS: { value: InvestStatus | typeof ALL_VALUE; label: string }[
   { value: 'amber', label: STATUS_LABELS.amber },
   { value: 'red', label: STATUS_LABELS.red },
 ]
-
-const navLinkClass = (active: boolean) =>
-  `rounded-lg px-2.5 py-1.5 text-sm font-medium transition-colors ${
-    active
-      ? 'bg-sky-100 text-sky-900'
-      : 'text-slate-700 hover:bg-slate-100 hover:text-slate-900'
-  }`
 
 const marketingNavLinkClass = (active: boolean) =>
   `text-base leading-6 transition-colors ${
@@ -191,17 +184,15 @@ function MobileNavMenu({
   open,
   onOpenChange,
   location,
-  marketing,
 }: {
   open: boolean
   onOpenChange: (open: boolean) => void
   location: { pathname: string }
-  marketing: boolean
 }) {
   const linkClass = (active: boolean) =>
-    marketing
-      ? `rounded-lg px-3 py-2.5 text-base ${active ? 'font-semibold text-[#00487b]' : 'text-gray-700 hover:bg-slate-50'}`
-      : 'rounded-lg px-3 py-2.5 text-slate-800 hover:bg-slate-50'
+    `rounded-lg px-3 py-2.5 text-base ${
+      active ? 'font-semibold text-[#00487b]' : 'text-gray-700 hover:bg-slate-50'
+    }`
 
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
@@ -251,14 +242,14 @@ function MobileNavMenu({
                 className={linkClass(location.pathname === ROUTES.raiseCapital)}
                 onClick={() => onOpenChange(false)}
               >
-                {marketing ? 'Raise Funds' : 'Raise capital'}
+                Raise Funds
               </Link>
             </nav>
             <a
               href={MY_ACCOUNT_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className={`mt-6 ${marketing ? `${accountButtonClass} w-full` : 'rounded-lg px-3 py-2.5 text-center font-bold text-sky-800 hover:bg-sky-50'}`}
+              className={`mt-6 ${accountButtonClass} w-full`}
             >
               My Account
             </a>
@@ -272,128 +263,67 @@ function MobileNavMenu({
 export function Header({ showFilters = true }: { showFilters?: boolean }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const location = useLocation()
-  const isMarketing = !showFilters
 
   return (
-    <header
-      className={`shrink-0 bg-white ${
-        isMarketing
-          ? 'shadow-[0px_1px_2px_-1px_rgba(0,0,0,0.10),0px_1px_3px_0px_rgba(0,0,0,0.10)]'
-          : 'border-b border-slate-200 shadow-sm'
-      }`}
-    >
-      {isMarketing ? (
-        <div className="mx-auto flex h-20 max-w-[1280px] items-center justify-between gap-4 px-4 sm:px-6">
-          <Link
-            to={ROUTES.home}
-            className="shrink-0 rounded outline-none focus-visible:ring-2 focus-visible:ring-sky-500/40"
-          >
-            <img
-              src={IINVEST_LOGO_SRC}
-              alt="iInvest"
-              width={144}
-              height={40}
-              className="h-10 w-auto max-w-[9rem] object-contain object-left"
-              decoding="async"
-            />
+    <header className="shrink-0 bg-white shadow-[0px_1px_2px_-1px_rgba(0,0,0,0.10),0px_1px_3px_0px_rgba(0,0,0,0.10)]">
+      <div className="mx-auto flex h-20 max-w-[1280px] items-center justify-between gap-4 px-4 sm:px-6">
+        <Link
+          to={ROUTES.home}
+          className="shrink-0 rounded outline-none focus-visible:ring-2 focus-visible:ring-sky-500/40"
+        >
+          <img
+            src={IINVEST_LOGO_SRC}
+            alt="iInvest"
+            width={144}
+            height={40}
+            className="h-10 w-auto max-w-[9rem] object-contain object-left"
+            decoding="async"
+          />
+        </Link>
+
+        <nav className="hidden items-center gap-12 lg:flex" aria-label="Main">
+          <Link to={ROUTES.home} className={marketingNavLinkClass(location.pathname === ROUTES.home)}>
+            Home
           </Link>
-
-          <nav className="hidden items-center gap-12 lg:flex" aria-label="Main">
-            <Link to={ROUTES.home} className={marketingNavLinkClass(location.pathname === ROUTES.home)}>
-              Home
-            </Link>
-            <Link to={ROUTES.invest} className={marketingNavLinkClass(location.pathname === ROUTES.invest)}>
-              Invest
-            </Link>
-            <Link
-              to={ROUTES.raiseCapital}
-              className={marketingNavLinkClass(location.pathname === ROUTES.raiseCapital)}
-            >
-              Raise Funds
-            </Link>
-          </nav>
-
-          <div className="flex items-center gap-3">
-            <a
-              href={MY_ACCOUNT_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`${accountButtonClass} hidden lg:inline-flex`}
-            >
-              My Account
-            </a>
-            <div className="lg:hidden">
-              <MobileNavMenu
-                open={mobileMenuOpen}
-                onOpenChange={setMobileMenuOpen}
-                location={location}
-                marketing
-              />
-            </div>
-          </div>
-        </div>
-      ) : (
-        <div className="flex flex-wrap items-center gap-x-2 gap-y-2 px-3 py-2 sm:gap-x-3 sm:px-4 lg:flex-nowrap lg:py-2.5">
-          <Link
-            to={ROUTES.home}
-            className="shrink-0 rounded outline-none focus-visible:ring-2 focus-visible:ring-sky-500/40"
-          >
-            <img
-              src={IINVEST_LOGO_SRC}
-              alt="iInvest"
-              width={160}
-              height={44}
-              className="h-8 w-auto max-w-[8.5rem] object-contain object-left sm:h-9 sm:max-w-[9.5rem]"
-              decoding="async"
-            />
+          <Link to={ROUTES.invest} className={marketingNavLinkClass(location.pathname === ROUTES.invest)}>
+            Invest
           </Link>
+          <Link
+            to={ROUTES.raiseCapital}
+            className={marketingNavLinkClass(location.pathname === ROUTES.raiseCapital)}
+          >
+            Raise Funds
+          </Link>
+        </nav>
 
-          <h1 className="hidden min-w-0 max-w-[9rem] truncate text-sm font-semibold text-slate-800 xl:block 2xl:max-w-[13rem]">
-            {SITE_TITLE}
-          </h1>
-
-          <nav className="hidden items-center gap-0.5 lg:flex" aria-label="Main">
-            <Link to={ROUTES.home} className={navLinkClass(location.pathname === ROUTES.home)}>
-              Home
-            </Link>
-            <Link to={ROUTES.invest} className={navLinkClass(location.pathname === ROUTES.invest)}>
-              Invest
-            </Link>
-            <Link
-              to={ROUTES.raiseCapital}
-              className={navLinkClass(location.pathname === ROUTES.raiseCapital)}
-            >
-              Raise capital
-            </Link>
-          </nav>
-
+        <div className="flex items-center gap-3">
           <a
             href={MY_ACCOUNT_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden shrink-0 rounded-lg px-2.5 py-1.5 text-sm font-bold text-sky-800 hover:bg-sky-50 hover:underline lg:inline-flex"
+            className={`${accountButtonClass} hidden lg:inline-flex`}
           >
             My Account
           </a>
-
-          <div className="ml-auto flex shrink-0 lg:hidden">
+          <div className="lg:hidden">
             <MobileNavMenu
               open={mobileMenuOpen}
               onOpenChange={setMobileMenuOpen}
               location={location}
-              marketing={false}
             />
           </div>
         </div>
-      )}
+      </div>
 
       {showFilters ? (
-        <div className="border-t border-[#003a63] bg-[#00487b] px-3 py-2.5 sm:px-4">
-          <div className="hidden sm:block">
-            <FilterDropdowns layout="bar" />
-          </div>
-          <div className="sm:hidden">
-            <FilterDropdowns layout="stack" />
+        <div className="border-t border-[#003a63] bg-[#00487b]">
+          <div className="mx-auto max-w-[1280px] px-4 py-2.5 sm:px-6">
+            <div className="hidden sm:block">
+              <FilterDropdowns layout="bar" />
+            </div>
+            <div className="sm:hidden">
+              <FilterDropdowns layout="stack" />
+            </div>
           </div>
         </div>
       ) : null}
