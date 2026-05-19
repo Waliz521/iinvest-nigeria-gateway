@@ -67,7 +67,7 @@ function FilterDropdowns({ layout }: { layout: 'bar' | 'stack' }) {
       }
     >
       <div className={isBar ? 'flex items-center gap-1.5' : 'flex w-full flex-col gap-1.5'}>
-        <label className={`shrink-0 font-medium text-slate-600 ${isBar ? 'text-xs' : 'text-sm'}`}>
+        <label className={`shrink-0 font-medium text-slate-100 ${isBar ? 'text-xs' : 'text-sm'}`}>
           Territory
         </label>
         <SearchableSelect
@@ -91,7 +91,7 @@ function FilterDropdowns({ layout }: { layout: 'bar' | 'stack' }) {
       </div>
       {cityTerritoryFilterOptions.length > 0 ? (
         <div className={isBar ? 'flex items-center gap-1.5' : 'flex w-full flex-col gap-1.5'}>
-          <label className={`shrink-0 font-medium text-slate-600 ${isBar ? 'text-xs' : 'text-sm'}`}>
+          <label className={`shrink-0 font-medium text-slate-100 ${isBar ? 'text-xs' : 'text-sm'}`}>
             Substates
           </label>
           <SearchableSelect
@@ -114,7 +114,7 @@ function FilterDropdowns({ layout }: { layout: 'bar' | 'stack' }) {
         </div>
       ) : null}
       <div className={isBar ? 'flex items-center gap-1.5' : 'flex w-full flex-col gap-1.5'}>
-        <label className={`shrink-0 font-medium text-slate-600 ${isBar ? 'text-xs' : 'text-sm'}`}>
+        <label className={`shrink-0 font-medium text-slate-100 ${isBar ? 'text-xs' : 'text-sm'}`}>
           Status
         </label>
         <Select.Root
@@ -295,7 +295,7 @@ export function Header({ showFilters = true }: { showFilters?: boolean }) {
       </div>
 
       {showFilters ? (
-        <div className="border-t border-slate-100 bg-slate-50/80 px-3 py-2 sm:px-4">
+        <div className="border-t border-[#003a63] bg-[#00487b] px-3 py-2.5 sm:px-4">
           <div className="hidden sm:block">
             <FilterDropdowns layout="bar" />
           </div>
