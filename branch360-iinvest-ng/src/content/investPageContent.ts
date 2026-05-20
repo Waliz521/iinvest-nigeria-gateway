@@ -1,7 +1,9 @@
 /** Copy from Data/iInvest-pages.xlsx (Invest sheet) + Home CTA alignment */
 
 export const INVEST_HERO = {
-  title: 'Invest with confidence...',
+  badge: 'Trusted Investment Platform',
+  titleLine1: 'Vetted Opportunities',
+  titleLine2: 'Across Nigerian Markets',
   paragraph:
     'iInvest connects retail and diaspora investors to vetted Nigerian investment opportunities including real estate, SME debt, and equities.',
   primaryCta: 'Start Now',
@@ -9,12 +11,16 @@ export const INVEST_HERO = {
   secondaryCtaHref: '#intro',
 } as const
 
-/** Trust badges in hero (Figma) */
 export const INVEST_HERO_TRUST = [
-  { label: 'Secure Investments', icon: 'secure' as const, color: 'sky' as const },
-  { label: 'Verified Opportunities', icon: 'verified' as const, color: 'orange' as const },
-  { label: 'Regulated Platform', icon: 'regulated' as const, color: 'sky' as const },
+  { value: 'SEC', label: 'Regulated', icon: 'regulated' as const },
+  { value: '220M+', label: 'Market Size', icon: 'growth' as const },
+  { value: '$50', label: 'Min. Investment', icon: 'fast' as const },
 ] as const
+
+export const INVEST_HERO_FLOATING = {
+  portfolioValue: { value: '₦45.2M', label: 'Portfolio Value' },
+  averageReturn: { value: '22.4%', label: 'Average Return' },
+} as const
 
 export const INVEST_VALUE_PROPOSITIONS = [
   {

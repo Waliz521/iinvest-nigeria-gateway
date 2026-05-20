@@ -1,4 +1,5 @@
 import { useId } from 'react'
+import { CaptchaField } from '../CaptchaField'
 import { INVEST_CONTACT } from '../../content/investPageContent'
 
 function ContactChannelIcon({ label }: { label: string }) {
@@ -138,17 +139,7 @@ export function InvestContactSection() {
                 className={`mt-2 ${inputClass} resize-y`}
               />
             </div>
-            <div className="flex items-center gap-3 rounded-[10px] border-2 border-gray-300 bg-gray-50 p-4">
-              <input
-                id={captchaId}
-                name="captcha"
-                type="checkbox"
-                className="h-5 w-5 rounded border-gray-300 text-[#00487b] focus:ring-[#00487b]/30"
-              />
-              <label htmlFor={captchaId} className="text-base font-medium text-slate-900">
-                {INVEST_CONTACT.form.captcha}
-              </label>
-            </div>
+            <CaptchaField id={captchaId} label={INVEST_CONTACT.form.captcha} />
             <button
               type="submit"
               className="h-14 w-full rounded-[10px] bg-[#00487b] text-base font-medium text-white shadow-lg transition-colors hover:bg-[#003a63] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00487b]/40"

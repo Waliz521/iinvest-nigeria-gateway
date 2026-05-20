@@ -1,4 +1,5 @@
 import { useId } from 'react'
+import { CaptchaField } from '../CaptchaField'
 import { RAISE_CONTACT } from '../../content/raisePageContent'
 
 function ContactChannelIcon({ label }: { label: string }) {
@@ -141,17 +142,7 @@ export function RaiseContactSection() {
                 className={`mt-2 ${inputClass} resize-y`}
               />
             </div>
-            <div className="flex items-center gap-2">
-              <input
-                id={captchaId}
-                name="captcha"
-                type="checkbox"
-                className="h-4 w-4 rounded border-gray-300 text-[#00487b] focus:ring-[#00487b]/30"
-              />
-              <label htmlFor={captchaId} className="text-sm font-medium text-gray-600">
-                {RAISE_CONTACT.form.captcha}
-              </label>
-            </div>
+            <CaptchaField id={captchaId} label={RAISE_CONTACT.form.captcha} />
             <button
               type="submit"
               className="h-14 w-full rounded-[10px] bg-[#00487b] text-base font-medium text-white shadow-lg transition-colors hover:bg-[#003a63] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00487b]/40"

@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { Header } from '../components/Header'
+import { MarketingPageTitle } from '../components/MarketingPageTitle'
 import { SiteFooter } from '../components/SiteFooter'
 import { InvestContactSection } from '../components/invest/InvestContactSection'
 import { InvestFaq } from '../components/invest/InvestFaq'
@@ -25,6 +26,7 @@ export function InvestPage() {
     <div className="flex min-h-screen flex-col bg-white font-[Poppins,system-ui,sans-serif]">
       <Header showFilters={false} />
       <main className="flex-1">
+        <MarketingPageTitle>Invest with confidence</MarketingPageTitle>
         <InvestHeroSection />
         <InvestValuePropositions />
         <InvestIntroductionSection />

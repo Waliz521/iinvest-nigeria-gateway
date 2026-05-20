@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { Header } from '../components/Header'
+import { MarketingPageTitle } from '../components/MarketingPageTitle'
 import { SiteFooter } from '../components/SiteFooter'
 import { RaiseHero } from '../components/raise/RaiseHero'
 import { RaiseContactSection } from '../components/raise/RaiseContactSection'
@@ -27,6 +28,7 @@ export function RaiseCapitalPage() {
     <div className="flex min-h-screen flex-col bg-white font-[Poppins,system-ui,sans-serif]">
       <Header showFilters={false} />
       <main className="flex-1" id="main-content">
+        <MarketingPageTitle>Raise capital for your Business</MarketingPageTitle>
         <RaiseHero />
         <RaiseValuePropositions />
         <RaiseIntroductionSection />
