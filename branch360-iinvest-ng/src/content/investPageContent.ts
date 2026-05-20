@@ -274,6 +274,12 @@ export const INVEST_CONTACT = {
     message: { label: 'Message', placeholder: 'Write your message here...' },
     captcha: "I'm not a robot",
     submit: 'Submit',
+    success: {
+      title: 'Thank you',
+      message:
+        'Your message has been received. Our team will get back to you within 5 working days.',
+      sendAnother: 'Send another message',
+    },
   },
 } as const
 

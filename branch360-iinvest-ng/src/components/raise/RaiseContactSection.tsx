@@ -1,5 +1,6 @@
-import { useId } from 'react'
+import { useId, useRef, useState, type FormEvent } from 'react'
 import { CaptchaField } from '../CaptchaField'
+import { ContactFormSuccess } from '../ContactFormSuccess'
 import { RAISE_CONTACT } from '../../content/raisePageContent'
 
 function ContactChannelIcon({ label }: { label: string }) {
@@ -33,6 +34,15 @@ const inputClass =
 
 export function RaiseContactSection() {
   const captchaId = useId()
+  const formRef = useRef<HTMLFormElement>(null)
+  const [submitted, setSubmitted] = useState(false)
+
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    const form = e.currentTarget
+    if (!form.reportValidity()) return
+    setSubmitted(true)
+  }
 
   return (
     <section id="contact" className="bg-slate-50 px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
@@ -72,85 +82,101 @@ export function RaiseContactSection() {
           </ul>
         </div>
 
-        <form
-          className="rounded-2xl border border-gray-200 bg-white p-8 shadow-lg"
-          onSubmit={(e) => e.preventDefault()}
-          aria-label="Raise capital contact form"
-        >
-          <div className="flex flex-col gap-6">
-            <div>
-              <label htmlFor="raise-business-name" className="text-sm font-semibold text-slate-900">
-                {RAISE_CONTACT.form.businessName.label}
-              </label>
-              <input
-                id="raise-business-name"
-                name="businessName"
-                type="text"
-                autoComplete="organization"
-                placeholder={RAISE_CONTACT.form.businessName.placeholder}
-                className={`mt-2 ${inputClass}`}
-              />
+        {submitted ? (
+          <ContactFormSuccess
+            title={RAISE_CONTACT.form.success.title}
+            message={RAISE_CONTACT.form.success.message}
+            sendAnotherLabel={RAISE_CONTACT.form.success.sendAnother}
+            onSendAnother={() => {
+              formRef.current?.reset()
+              setSubmitted(false)
+            }}
+          />
+        ) : (
+          <form
+            ref={formRef}
+            className="rounded-2xl border border-gray-200 bg-white p-8 shadow-lg"
+            onSubmit={handleSubmit}
+            aria-label="Raise capital contact form"
+          >
+            <div className="flex flex-col gap-6">
+              <div>
+                <label htmlFor="raise-business-name" className="text-sm font-semibold text-slate-900">
+                  {RAISE_CONTACT.form.businessName.label}
+                </label>
+                <input
+                  id="raise-business-name"
+                  name="businessName"
+                  type="text"
+                  required
+                  autoComplete="organization"
+                  placeholder={RAISE_CONTACT.form.businessName.placeholder}
+                  className={`mt-2 ${inputClass}`}
+                />
+              </div>
+              <div>
+                <label htmlFor="raise-contact-person" className="text-sm font-semibold text-slate-900">
+                  {RAISE_CONTACT.form.contactPerson.label}
+                </label>
+                <input
+                  id="raise-contact-person"
+                  name="contactPerson"
+                  type="text"
+                  required
+                  autoComplete="name"
+                  placeholder={RAISE_CONTACT.form.contactPerson.placeholder}
+                  className={`mt-2 ${inputClass}`}
+                />
+              </div>
+              <div>
+                <label htmlFor="raise-mobile-number" className="text-sm font-semibold text-slate-900">
+                  {RAISE_CONTACT.form.mobile.label}
+                </label>
+                <input
+                  id="raise-mobile-number"
+                  name="mobile"
+                  type="tel"
+                  autoComplete="tel"
+                  placeholder={RAISE_CONTACT.form.mobile.placeholder}
+                  className={`mt-2 ${inputClass}`}
+                />
+              </div>
+              <div>
+                <label htmlFor="raise-email-address" className="text-sm font-semibold text-slate-900">
+                  {RAISE_CONTACT.form.email.label}
+                </label>
+                <input
+                  id="raise-email-address"
+                  name="email"
+                  type="email"
+                  required
+                  autoComplete="email"
+                  placeholder={RAISE_CONTACT.form.email.placeholder}
+                  className={`mt-2 ${inputClass}`}
+                />
+              </div>
+              <div>
+                <label htmlFor="raise-message-body" className="text-sm font-semibold text-slate-900">
+                  {RAISE_CONTACT.form.message.label}
+                </label>
+                <textarea
+                  id="raise-message-body"
+                  name="message"
+                  rows={5}
+                  placeholder={RAISE_CONTACT.form.message.placeholder}
+                  className={`mt-2 ${inputClass} resize-y`}
+                />
+              </div>
+              <CaptchaField id={captchaId} label={RAISE_CONTACT.form.captcha} />
+              <button
+                type="submit"
+                className="h-14 w-full rounded-[10px] bg-[#00487b] text-base font-medium text-white shadow-lg transition-colors hover:bg-[#003a63] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00487b]/40"
+              >
+                {RAISE_CONTACT.form.submit}
+              </button>
             </div>
-            <div>
-              <label htmlFor="raise-contact-person" className="text-sm font-semibold text-slate-900">
-                {RAISE_CONTACT.form.contactPerson.label}
-              </label>
-              <input
-                id="raise-contact-person"
-                name="contactPerson"
-                type="text"
-                autoComplete="name"
-                placeholder={RAISE_CONTACT.form.contactPerson.placeholder}
-                className={`mt-2 ${inputClass}`}
-              />
-            </div>
-            <div>
-              <label htmlFor="raise-mobile-number" className="text-sm font-semibold text-slate-900">
-                {RAISE_CONTACT.form.mobile.label}
-              </label>
-              <input
-                id="raise-mobile-number"
-                name="mobile"
-                type="tel"
-                autoComplete="tel"
-                placeholder={RAISE_CONTACT.form.mobile.placeholder}
-                className={`mt-2 ${inputClass}`}
-              />
-            </div>
-            <div>
-              <label htmlFor="raise-email-address" className="text-sm font-semibold text-slate-900">
-                {RAISE_CONTACT.form.email.label}
-              </label>
-              <input
-                id="raise-email-address"
-                name="email"
-                type="email"
-                autoComplete="email"
-                placeholder={RAISE_CONTACT.form.email.placeholder}
-                className={`mt-2 ${inputClass}`}
-              />
-            </div>
-            <div>
-              <label htmlFor="raise-message-body" className="text-sm font-semibold text-slate-900">
-                {RAISE_CONTACT.form.message.label}
-              </label>
-              <textarea
-                id="raise-message-body"
-                name="message"
-                rows={5}
-                placeholder={RAISE_CONTACT.form.message.placeholder}
-                className={`mt-2 ${inputClass} resize-y`}
-              />
-            </div>
-            <CaptchaField id={captchaId} label={RAISE_CONTACT.form.captcha} />
-            <button
-              type="submit"
-              className="h-14 w-full rounded-[10px] bg-[#00487b] text-base font-medium text-white shadow-lg transition-colors hover:bg-[#003a63] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00487b]/40"
-            >
-              {RAISE_CONTACT.form.submit}
-            </button>
-          </div>
-        </form>
+          </form>
+        )}
       </div>
     </section>
   )

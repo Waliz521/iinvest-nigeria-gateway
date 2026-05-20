@@ -1,5 +1,6 @@
-import { useId } from 'react'
+import { useId, useRef, useState, type FormEvent } from 'react'
 import { CaptchaField } from '../CaptchaField'
+import { ContactFormSuccess } from '../ContactFormSuccess'
 import { INVEST_CONTACT } from '../../content/investPageContent'
 
 function ContactChannelIcon({ label }: { label: string }) {
@@ -42,6 +43,15 @@ const inputClass =
 
 export function InvestContactSection() {
   const captchaId = useId()
+  const formRef = useRef<HTMLFormElement>(null)
+  const [submitted, setSubmitted] = useState(false)
+
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    const form = e.currentTarget
+    if (!form.reportValidity()) return
+    setSubmitted(true)
+  }
 
   return (
     <section id="contact" className="bg-slate-50 px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
@@ -82,9 +92,21 @@ export function InvestContactSection() {
           </ul>
         </div>
 
+        {submitted ? (
+          <ContactFormSuccess
+            title={INVEST_CONTACT.form.success.title}
+            message={INVEST_CONTACT.form.success.message}
+            sendAnotherLabel={INVEST_CONTACT.form.success.sendAnother}
+            onSendAnother={() => {
+              formRef.current?.reset()
+              setSubmitted(false)
+            }}
+          />
+        ) : (
         <form
+          ref={formRef}
           className="rounded-2xl border border-gray-200 bg-white p-8 shadow-lg"
-          onSubmit={(e) => e.preventDefault()}
+          onSubmit={handleSubmit}
           aria-label="Contact form"
         >
           <div className="flex flex-col gap-6">
@@ -96,6 +118,7 @@ export function InvestContactSection() {
                 id="invest-full-name"
                 name="fullName"
                 type="text"
+                required
                 autoComplete="name"
                 placeholder={INVEST_CONTACT.form.fullName.placeholder}
                 className={`mt-2 ${inputClass}`}
@@ -122,6 +145,7 @@ export function InvestContactSection() {
                 id="invest-email-address"
                 name="email"
                 type="email"
+                required
                 autoComplete="email"
                 placeholder={INVEST_CONTACT.form.email.placeholder}
                 className={`mt-2 ${inputClass}`}
@@ -148,6 +172,7 @@ export function InvestContactSection() {
             </button>
           </div>
         </form>
+        )}
       </div>
     </section>
   )
