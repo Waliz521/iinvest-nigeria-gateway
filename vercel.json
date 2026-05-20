@@ -3,5 +3,8 @@
   "installCommand": "cd branch360-iinvest-ng && npm install",
   "buildCommand": "cd branch360-iinvest-ng && npm run build",
   "outputDirectory": "branch360-iinvest-ng/dist",
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/$1" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
 }

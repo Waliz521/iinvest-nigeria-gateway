@@ -1,7 +1,7 @@
-import { useId, useRef, useState, type FormEvent } from 'react'
-import { CaptchaField } from '../CaptchaField'
 import { ContactFormSuccess } from '../ContactFormSuccess'
+import { RecaptchaWidget } from '../RecaptchaWidget'
 import { RAISE_CONTACT } from '../../content/raisePageContent'
+import { useContactFormWithRecaptcha } from '../../hooks/useContactFormWithRecaptcha'
 
 function ContactChannelIcon({ label }: { label: string }) {
   const stroke = label === 'Phone' ? '#ff6d00' : '#00487b'
@@ -33,16 +33,8 @@ const inputClass =
   'block w-full rounded-[10px] border border-gray-300 px-4 py-3 text-base text-slate-900 placeholder:text-neutral-950/50 focus:border-[#00487b] focus:outline-none focus:ring-2 focus:ring-[#00487b]/25'
 
 export function RaiseContactSection() {
-  const captchaId = useId()
-  const formRef = useRef<HTMLFormElement>(null)
-  const [submitted, setSubmitted] = useState(false)
-
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-    const form = e.currentTarget
-    if (!form.reportValidity()) return
-    setSubmitted(true)
-  }
+  const { formRef, recaptchaRef, submitted, submitting, error, handleSubmit, resetForm } =
+    useContactFormWithRecaptcha()
 
   return (
     <section id="contact" className="bg-slate-50 px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
@@ -87,10 +79,7 @@ export function RaiseContactSection() {
             title={RAISE_CONTACT.form.success.title}
             message={RAISE_CONTACT.form.success.message}
             sendAnotherLabel={RAISE_CONTACT.form.success.sendAnother}
-            onSendAnother={() => {
-              formRef.current?.reset()
-              setSubmitted(false)
-            }}
+            onSendAnother={resetForm}
           />
         ) : (
           <form
@@ -167,12 +156,18 @@ export function RaiseContactSection() {
                   className={`mt-2 ${inputClass} resize-y`}
                 />
               </div>
-              <CaptchaField id={captchaId} label={RAISE_CONTACT.form.captcha} />
+              <RecaptchaWidget ref={recaptchaRef} />
+              {error ? (
+                <p className="text-sm font-medium text-red-600" role="alert">
+                  {error}
+                </p>
+              ) : null}
               <button
                 type="submit"
-                className="h-14 w-full rounded-[10px] bg-[#00487b] text-base font-medium text-white shadow-lg transition-colors hover:bg-[#003a63] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00487b]/40"
+                disabled={submitting}
+                className="h-14 w-full rounded-[10px] bg-[#00487b] text-base font-medium text-white shadow-lg transition-colors hover:bg-[#003a63] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00487b]/40 disabled:cursor-not-allowed disabled:opacity-60"
               >
-                {RAISE_CONTACT.form.submit}
+                {submitting ? 'Verifying…' : RAISE_CONTACT.form.submit}
               </button>
             </div>
           </form>
